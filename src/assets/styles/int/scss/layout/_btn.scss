@@ -1,0 +1,93 @@
+@media (min-width: $s-xs) {
+  .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    padding: 14px;
+    margin: 8px;
+    border: 0 solid rgba(0,0,0,0);
+    border-radius: 18px;
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+    transition: all .1s ease-in-out;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+    &-blue {
+      color: $w;
+      background: map-get($bc, 'blue' );
+      &:hover {
+        background: lighten(map-get($bc, 'blue' ), 10%);
+      }
+    }
+    &-gold {
+      color: $w;
+      background: map-get($bc, 'gold' );
+      &:hover {
+        color: $w;
+        background: lighten(map-get($bc, 'gold' ), 10%);
+      }
+    }
+    &-dblue {
+      color: $w;
+      background: map-get($bc, 'dblue' );
+      &:hover {
+        color: $w;
+        background: lighten(map-get($bc, 'dblue' ), 10%);
+      }
+    }
+    &-light {
+      color: $b;
+      background: map-get($bc, 'white' );
+      &:hover {
+        background: map-get($bc, 'light');
+      }
+    }
+    &-copy {
+      position: relative;
+      &:before {
+        content: 'Copied!';
+        position: absolute;
+        font-size: 20px;
+        left: 0%;
+        vertical-align: middle;
+        height: 100%;
+        width: 100%;
+        background: inherit;
+        padding: 15px 8px;
+        border-radius: inherit;
+        visibility: hidden;
+        opacity: 0;
+        transition: all ease-in-out .3s;
+      }
+    }
+    
+  }
+  .copy-text {
+    position: relative;
+    input {
+      opacity: 0;
+      position: relative;
+      z-index: -1000;
+  
+    }
+    &.active {
+      .btn-copy::before {
+         visibility: visible;
+         opacity: 1;
+      }
+    }
+
+  }
+}
+$btn-scales-options: (
+  s1: (ts: 12px, pd: 10px), // ts - text size; pd - padding
+  s2: (ts: 14px, pd: 12px),
+  s3: (ts: 16px, pd: 14px),
+  s4: (ts: 18px, pd: 16px)
+);
+@include BTNSCALE($btn-scales-options);
+@include BTNWIDTH(80, 320);
